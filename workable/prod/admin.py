@@ -3,6 +3,6 @@ from .models import Profile
 
 
 class ProfileAdmin(admin.ModelAdmin):
-    fields = ['name', 'email','phone_number']
+    fields = ['name', 'emailaddress']
 
 admin.site.register(Profile, ProfileAdmin)
