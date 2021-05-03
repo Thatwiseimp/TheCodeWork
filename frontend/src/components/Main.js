@@ -11,7 +11,7 @@ function Main() {
     const [code, setcode] = useState('')
     const [result,setresult] = useState()
     const [error,seterror] = useState(false)
-    const [signin,setsignin] = useState(false)
+
     setTimeout(function(){
         window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
             "recaptcha-container",

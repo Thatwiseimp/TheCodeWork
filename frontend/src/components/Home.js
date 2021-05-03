@@ -23,7 +23,7 @@ function Home() {
       }).catch(err => console.log(err))
     }
 
-    profiles.map(profile=>lst.push(profile.email.substring(0, profile.email.lastIndexOf("@"))))
+    profiles.map(profile=>lst.push(profile.username.substring(0, profile.username.lastIndexOf("@"))))
     
 
 
