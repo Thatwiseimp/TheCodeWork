@@ -33,7 +33,9 @@ function Main() {
     }
     async function submitPhoneNumberAuthCode() {
         await result.confirm(code)
-        .then(setsignin(true))
+        .then(res => {
+            history.push('./home');
+        })
         .catch(seterror(true))
     }
 
