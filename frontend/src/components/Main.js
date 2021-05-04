@@ -10,7 +10,6 @@ function Main() {
     const [phoneNumber, setphoneNumber] = useState('')
     const [code, setcode] = useState('')
     const [result,setresult] = useState()
-    const [error,seterror] = useState(false)
 
     setTimeout(function(){
         window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
@@ -18,25 +17,25 @@ function Main() {
             {
               size: "normal",
               callback: function(response) {
-                submitPhoneNumberAuth();
+
               }
             }
         );
 
     },1000)
     
-    async function submitPhoneNumberAuth() {         
+    function submitPhoneNumberAuth() {         
         var appVerifier = window.recaptchaVerifier;
-        await firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
+        firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
         .then(res=>setresult(res))
         .catch(err=>console.log(err))
     }
-    async function submitPhoneNumberAuthCode() {
-        await result.confirm(code)
+    function submitPhoneNumberAuthCode() {
+        result.confirm(code)
         .then(res => {
             history.push('./home');
         })
-        .catch(seterror(true))
+        .catch(err=>console.log(err))
     }
 
     
@@ -62,7 +61,6 @@ function Main() {
             <input value={code} placeholder='Enter the OTP' onChange={(event=>setcode(event.target.value))} />
             <button disabled={!code} className='button' onClick={submitPhoneNumberAuthCode}>Verify</button>
             <button className='button' onClick={logOut}>Log out</button>
-            {error ? <h3>Invalid user authentication</h3> : null}
             <div id="recaptcha-container"></div>
         </div>
         
