@@ -1,0 +1,7 @@
+The assignment has a two part composition with django as the backend and react supporting the frontend. 
+The product has the following features,
+    * There is a login/signup page which acts as the single entry point.
+    * The 2FA part of the project is aided by google's Firebase Auth which requests the user's phone number and a captcha for the secondary factor of authentication.
+    * A TOTP(Time bases One Time Password) is sent to the user to grant access to the home page.
+    * The signup form also stores a token on the django database using Json Web-tokens which is later retrived in compiling the profile page. 
+    
